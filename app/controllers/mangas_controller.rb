@@ -5,6 +5,11 @@ class MangasController < ApplicationController
   # GET /mangas.json
   def index
     @mangas = Manga.all
+    if params[:search]
+      @mangas = Manga.search(params[:search]).order("created_at DESC")
+    else
+      @mangas = Manga.all.order("created_at DESC")
+    end
   end
 
   # GET /mangas/1
