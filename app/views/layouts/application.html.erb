@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OneStopMangaShop</title>
+    <title>One Stop Manga Shop</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,11 +9,9 @@
 
   </head>
 
+
   <body>
     <%= yield %>
-     <%= form_tag(mangas_path, :method => "get", id: "search-form") do %>
-    	<%= text_field_tag :search, params[:search], placeholder: "Search Manga" %>
-    	<%= submit_tag "Search", :name => nil %>
-    <% end %>
+    
   </body>
 </html>
