@@ -1,13 +1,13 @@
 <header><h1 class="title"><center>One Stop Manga Shop!</h1></center>
 
 <div class="topnav" id="myTopnav">
-  <a href="#home">Home</a>
-  <a href="#categories">Categories</a>
+  <%= link_to 'Home', mangas_path %>
+  <%= link_to 'Categories', categories_path %>
   <a href="#contact">Contact</a>
   <a href="#about">About</a>
   <a href="#cart">Shopping Cart</a>
   <a><%= form_tag(mangas_path, :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Manga" %>
       <%= submit_tag "Search", :name => nil %>
-    <% end %></a>
+    <% end %></a>   
 </div></header>
