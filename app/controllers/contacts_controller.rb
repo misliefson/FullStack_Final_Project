@@ -1,9 +1,9 @@
 class ContactsController < InheritedResources::Base
+def index
+  	@contacts = Contact.all
+  end
 
-  private
-
-    def contact_params
-      params.require(:contact).permit(:title, :email, :phone)
-    end
+  def show
+  end
 end
 
