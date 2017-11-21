@@ -6,7 +6,7 @@ class MangasController < ApplicationController
   def index
     @mangas = Manga.all
     if params[:search]
-      @mangas = Manga.search(params[:search]).order("created_at DESC")
+      @mangas = Manga.search(params[:search]).order("created_at DESC").page(params[:page]).per(5)
     else
       @mangas = Manga.all.order("created_at DESC")
     end
