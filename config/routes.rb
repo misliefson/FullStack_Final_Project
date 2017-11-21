@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :abouts
   get 'categories/index'
 
   get 'categories/show'
