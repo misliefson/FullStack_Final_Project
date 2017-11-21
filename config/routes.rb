@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get '/' => 'mangas#index', as: 'index'
   get '/categories' => 'categories#index', as: 'categories'
   get '/about' => 'abouts#index', as: 'about_index'
+  get '/contact' => 'contacts#index', as: 'contact_index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
