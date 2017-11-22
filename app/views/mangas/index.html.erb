@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <%= paginate @mangas %>
+<% if @mangas.empty? %>
+  <p>No Products found for keyword <%= params[:search] %></p>
+<% else %>
+
 <table>
   <thead>
     <tr>
@@ -26,3 +30,4 @@
 </table>
 
 <br>
+<% end %>
