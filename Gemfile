@@ -55,6 +55,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
 gem 'kaminari'
+gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
 # Active Admin
 
 gem 'devise'
