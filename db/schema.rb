@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171121172705) do
+ActiveRecord::Schema.define(version: 20171126235553) do
 
   create_table "abouts", force: :cascade do |t|
     t.string "title"
@@ -85,6 +85,10 @@ ActiveRecord::Schema.define(version: 20171121172705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["category_id"], name: "index_mangas_on_category_id"
   end
 
