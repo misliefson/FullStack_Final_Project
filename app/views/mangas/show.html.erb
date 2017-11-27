@@ -22,6 +22,11 @@
   <%= @manga.stock_quantity %>
 </p>
 
-
+<%
+if session[:content].empty?
+        session[:content] = Array.new
+end
+%>
+<%= link_to "Add to Cart", add_path, :method => "add_to_cart"%>
 <%= link_to 'Edit', edit_manga_path(@manga) %>
 <%= link_to 'Back', mangas_path %>

@@ -19,6 +19,13 @@ class MangasController < ApplicationController
     redirect_to request.referer
   end
 
+  def add_to_cart
+     @manga = Manga.where(id: params[:id]).first
+     session[:content].push(@manga.id)
+  end
+
+
+
   # GET /mangas/1
   # GET /mangas/1.json
   def show
