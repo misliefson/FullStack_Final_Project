@@ -5,6 +5,8 @@
   <%= @manga.title %>
 </p>
 
+<%= link_to image_tag(@manga.image.url(:med)), @manga.image.url %>
+
 <p>
   <strong>Author:</strong>
   <%= @manga.author %>
@@ -19,4 +21,7 @@
   <strong>Stock quantity:</strong>
   <%= @manga.stock_quantity %>
 </p>
+
+
+<%= link_to 'Edit', edit_manga_path(@manga) %>
 <%= link_to 'Back', mangas_path %>

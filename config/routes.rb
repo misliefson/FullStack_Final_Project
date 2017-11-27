@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cart/index'
+
   resources :contacts
   resources :abouts
   get 'categories/index'
@@ -13,5 +15,7 @@ Rails.application.routes.draw do
   get '/categories' => 'categories#index', as: 'categories'
   get '/about' => 'abouts#index', as: 'about_index'
   get '/contact' => 'contacts#index', as: 'contact_index'
+
+  delete'/mangas/remove_image/:id' => 'mangas#remove_image', as: :remove_image
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

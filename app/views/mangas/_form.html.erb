@@ -1,4 +1,4 @@
-<%= form_with(model: manga, local: true) do |form| %>
+<%= form_for @manga, html: {mutlipart: true } do |form| %>
   <% if manga.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(manga.errors.count, "error") %> prohibited this manga from being saved:</h2>
@@ -31,6 +31,14 @@
     <%= form.number_field :stock_quantity, id: :manga_stock_quantity %>
   </div>
 
+  <div class="field">
+    <%= form.file_field :image %>
+  </div>
+
+ <% if @manga.image.exists? %>
+    <%= link_to "Remove Image", remove_image_path(@manga), method: :delete %>
+
+<% end %>
   <div class="actions">
     <%= form.submit %>
   </div>

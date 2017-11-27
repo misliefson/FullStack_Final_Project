@@ -12,6 +12,13 @@ class MangasController < ApplicationController
     end
   end
 
+  def remove_image
+    @manga = Manga.where(id: params[:id]).first
+    @manga.image = nil
+    @manga.save
+    redirect_to request.referer
+  end
+
   # GET /mangas/1
   # GET /mangas/1.json
   def show
@@ -74,6 +81,6 @@ class MangasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def manga_params
-      params.require(:manga).permit(:title, :author, :description, :stock_quantity)
+      params.require(:manga).permit(:title, :author, :description, :stock_quantity, :image)
     end
 end
