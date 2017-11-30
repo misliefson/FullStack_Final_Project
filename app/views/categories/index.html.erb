@@ -1,10 +1,12 @@
 <h1><center>Categories</center></h1>
 <%= form_tag categories_path, :method => 'get' do %>
+
+<%= form_for @category do |form| %>
   <p>
     <%= text_field_tag :search, params[:search], placeholder: "Search Categories" %>
+    <%= form.collection_select(:id, @categories,:id, :name) %>
     <%= submit_tag "Search", :name => nil %>
   </p>
-<% end %>
 
 <% @categories.each do |cat| %>
 	<h2><%= cat.name %></h2>
@@ -20,6 +22,18 @@
   </thead>
 
   <tbody>
+    <% if params[:search]%>
+     <% @manga.where("title LIKE '%#{params[:search]}%'").where("category_id = #{cat.id}").each do |manga| %>
+     <tr>
+        <td><%= manga.title %></td>
+        <td><%= manga.author %></td>
+        <td><%= manga.description %></td>
+        <td><%= manga.stock_quantity %></td>
+        <td><%= link_to 'Show', manga %></td>
+      </tr>
+    <% end %>
+
+    <% else %>
     <% @manga.where("category_id = #{cat.id}").each do |manga| %>
       <tr>
         <td><%= manga.title %></td>
@@ -31,5 +45,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
+<% end %>
+<% end %>
 <% end %>

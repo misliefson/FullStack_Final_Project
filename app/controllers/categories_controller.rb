@@ -1,11 +1,11 @@
 class CategoriesController < ApplicationController
 
   def index
+    @category = Category.new
   	@categories = Category.all
-  	if params[:search]
-      @categories = Category.search(params[:search]).order("created_at DESC")
-    else
-      @categories = Category.all.order("created_at DESC")
+
+    if params[:category]
+      @categories = Category.where("id = ? ", params[:category][:id])
     end
   	@manga = Manga.all
   end

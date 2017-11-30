@@ -8,6 +8,6 @@ class CartController < ApplicationController
   end
 
   def checkout
-
+  	@customer = Customer.new
   end
 end
