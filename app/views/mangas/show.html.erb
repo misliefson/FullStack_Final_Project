@@ -23,7 +23,7 @@
 </p>
 
 <%
-if session[:content].empty?
+if session[:content].nil?
         session[:content] = Array.new
 end
 %>
