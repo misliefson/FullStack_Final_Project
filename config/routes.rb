@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'customers/index'
+
   resources :orders
   get 'cart/index'
 
@@ -22,6 +24,6 @@ Rails.application.routes.draw do
   delete '/mangas/remove_image/:id' => 'mangas#remove_image', as: :remove_image
   delete '/cart' => 'cart#clear', as: :clear
   get '/cart/checkout' => 'cart#checkout', as: 'checkout'
-  get '/customer' => 'customer#index', as: 'customers'
+  post '/customer' => 'customers#index', as: 'customers'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

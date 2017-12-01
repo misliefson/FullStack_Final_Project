@@ -1,0 +1,25 @@
+<h1><center>Customer Invoice</center></h1>
+
+
+<h3>Invoice for Customer: <%= params[:customer][:first_name]%> <%= params[:customer][:last_name] %></h3>
+<%= params[:customer][:address]%>
+<br><%= params[:customer][:city]%>, Province <br>
+<%= params[:customer][:country]%>
+<%= params[:customer][:postal_code]%>
+<br>
+<br>
+<% @count = 0 %>
+<% session[:content].each do |id| %>
+
+	<% @manga.where("id = #{id}").each do |manga| %>
+		<p><%= manga.title %>..........1 x $14.99 = $14.99</p>
+	<% end %>
+	<% @count = @count + 1 %>
+<% end %>
+<br>
+<br>
+<% @subtotal = @count * 14.99 %>
+<p>Subtotal: $<%= @subtotal %></p>
+<p>PST</p>
+<p>GST</p>
+<p>Grand Total: </p>

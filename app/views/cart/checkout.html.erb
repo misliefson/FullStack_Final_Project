@@ -1,42 +1,42 @@
-<h1>Checkout!</h1>
+<h1><center>Checkout!</center></h1>
 <%= form_for @customer do |form| %>
 
-<div class="field">
+<div class="field"><center>
 	<%= form.label :first_name %>
 	<%= form.text_field :first_name, id: :customer_first_name %>
-</div>
+</center></div>
 
-<div class="field">
+<div class="field"><center>
 	<%= form.label :last_name %>
 	<%= form.text_field :last_name, id: :customer_last_name %>
-</div>
+</center></div>
 
-<div class="field">
+<div class="field"><center>
 	<%= form.label :email %>
 	<%= form.text_field :email, id: :customer_email %>
-</div>
+</center></div>
 
-<div class="field">
+<div class="field"><center>
 	<%= form.label :address %>
 	<%= form.text_field :address, id: :customer_address %>
-</div>
+</center></div>
 
-<div class="field">
+<div class="field"><center>
 	<%= form.label :city %>
 	<%= form.text_field :city, id: :customer_city %>
-</div>
+</center></div>
 
-<div class="field">
+<div class="field"><center>
 	<%= form.label :country %>
 	<%= form.text_field :country, id: :customer_country %>
-</div>
+</center></div>
 
-<div class="field">
+<div class="field"><center>
 	<%= form.label :postal_code %>
 	<%= form.text_field :postal_code, id: :customer_postal_code %>
-</div>
+</center></div>
 
-<div class="actions">
+<div class="actions"><center>
     <%= form.submit %>
-  </div>
+  </center></div>
 <% end %>
