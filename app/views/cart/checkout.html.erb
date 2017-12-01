@@ -27,6 +27,11 @@
 </center></div>
 
 <div class="field"><center>
+	<%= form.label :province %>
+	<%= form.text_field :province, id: :customer_province %>
+</center></div>
+
+<div class="field"><center>
 	<%= form.label :country %>
 	<%= form.text_field :country, id: :customer_country %>
 </center></div>
@@ -37,6 +42,6 @@
 </center></div>
 
 <div class="actions"><center>
-    <%= form.submit %>
+    <%= form.submit "Proceed to Invoice"%>
   </center></div>
 <% end %>

@@ -1,9 +1,8 @@
 <h1><center>Customer Invoice</center></h1>
 
-
 <h3>Invoice for Customer: <%= params[:customer][:first_name]%> <%= params[:customer][:last_name] %></h3>
 <%= params[:customer][:address]%>
-<br><%= params[:customer][:city]%>, Province <br>
+<br><%= params[:customer][:city]%>, <%= params[:customer][:province]%> <br>
 <%= params[:customer][:country]%>
 <%= params[:customer][:postal_code]%>
 <br>
@@ -16,10 +15,39 @@
 	<% end %>
 	<% @count = @count + 1 %>
 <% end %>
-<br>
-<br>
-<% @subtotal = @count * 14.99 %>
-<p>Subtotal: $<%= @subtotal %></p>
-<p>PST</p>
-<p>GST</p>
-<p>Grand Total: </p>
+
+<% @provinces.where("name LIKE '%#{params[:customer][:province]}%'").each do |prov| %>
+
+<% @subtotal = @count * 14.99 
+@pst = prov.pst * @subtotal
+@gst = prov.gst * @subtotal
+@hst = prov.hst * @subtotal
+@gt = @subtotal + @pst + @gst + @hst
+%>
+
+Subtotal: $<%= @subtotal %><br>
+PST(<%=prov.pst*100 %>%): <%= @pst %><br>
+GST(<%=prov.gst*100 %>%): <%= @gst %><br>
+HST(<%=prov.hst*100 %>%): <%= @hst %><br>
+Grand Total: $<%= @gt %><br>
+
+<%
+	@cust = Customer.new(:first_name => "#{params[:customer][:first_name]}", 
+				 :last_name => "#{params[:customer][:last_name]}",
+				 :email => "#{params[:customer][:email]}",
+				 :address => "#{params[:customer][:address]}",
+				 :city => "#{params[:customer][:city]}",
+				 :province => "#{params[:customer][:province]}",
+				 :country => "#{params[:customer][:country]}",
+				 :postal_code => "#{params[:customer][:postal_code]}",
+				 :province_id => prov.id).save
+	
+	@orderCust = Customer.where("first_name LIKE '#{params[:customer][:first_name]}'").where("last_name LIKE '#{params[:customer][:last_name]}'").first
+
+	@order = Order.new(:amount => @gt,
+					   :gst => @gst,
+					   :pst => @pst,
+					   :hst => @hst,
+					   :customer_id => @orderCust.id).save
+%>
+<% end %>
