@@ -1,1 +1,9 @@
-<h2>Thanks, you paid <strong><%= number_to_currency(((session[:total]).to_f)) %></strong>!</h2>
+<h2>Thanks, you paid <strong><%=number_to_currency(((session[:total]).to_f)) %></strong>!</h2>
+
+<%
+	@order = Order.where("id = #{(session[:order_id].to_i)}").first
+	@order.status = "PAID"
+	@order.save
+
+	session[:content].clear
+%>

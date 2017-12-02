@@ -48,9 +48,15 @@ Grand Total: $<%= @gt %><br>
 					   :gst => @gst,
 					   :pst => @pst,
 					   :hst => @hst,
-					   :customer_id => @orderCust.id).save
+					   :customer_id => @orderCust.id,
+					   :status => "NEW").save
 
 	session[:total] = @gt
+
+	@newOrder = Order.order("created_at").last
+
+	session[:order_id] = @newOrder.id
 %>
 <% end %>
+<br>
 <%= link_to 'Pay With Stripe', charges_new_path %>
