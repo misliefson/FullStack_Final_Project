@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'charges/new'
+
+  get 'charges/create'
+
   get 'customers/index'
 
   resources :orders

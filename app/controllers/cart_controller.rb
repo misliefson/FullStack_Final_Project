@@ -9,5 +9,8 @@ class CartController < ApplicationController
 
   def checkout
   	@customer = Customer.new
+  	if @customer.save
+
+  	end
   end
 end
